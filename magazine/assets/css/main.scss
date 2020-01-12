@@ -1,0 +1,71 @@
+// colors
+$primary-blue: #27198C;
+$primary-orange: #FE7010;
+$off-black: #191919;
+$heading-grey: #BEBEBE;
+$border-grey: #E5E5E5;
+$panel-grey: #F6F6F6;
+
+// FONT STYLES
+.section-heading{
+  font-family: 'Roboto Slab';
+  color: $heading-grey;
+  margin-bottom: 1em;
+}
+
+.highlight-text{
+  font-family: 'Muli';
+  margin-bottom: 1.5em;
+  h4{
+    color: $primary-blue;
+    font-size: 1.3em;
+    font-weight: 900;
+    line-height: 1.5
+  }
+}
+
+.main-text, .button{
+  font-family: 'Muli';
+  p{
+    font-weight: 600;
+    font-size: 0.845em;
+    line-height: 2
+  }
+}
+
+// PAGE STYLES
+.page-container{
+  background-color: $panel-grey;
+  border: 1px solid $border-grey;
+  padding: 1.5em;
+}
+
+
+.magazine-grid{
+  display: grid;
+}
+
+// CAROUSEL
+
+#carousel-1{
+  margin-bottom: 4em;
+}
+.carousel-indicators{
+  bottom: -40px;
+  li{
+    width: 10px;
+    height: 2px;
+    background-color: $primary-blue;
+    opacity: 1;
+    
+  }
+  li.active{
+    background-color: $primary-orange;
+  }
+}
+
+
+// IMAGES
+.magazine-image{
+  width: 100%;
+}

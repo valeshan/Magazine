@@ -1,66 +1,183 @@
 <template>
-  <section class="container">
-    <div>
-      <logo/>
-      <h1 class="title">
-        magazine
-      </h1>
-      <h2 class="subtitle">
-        A responsive magazine page
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
+  <section class="page-container">
+    <div class="section-heading">
+      <h6>{{sectionHeading}}</h6>
+    </div>
+    <div class="magazine-grid">
+      <!-- FIRST COLUMN BELOW -->
+      <div class="first-column">
+
+        <div class="highlight-text">
+          <h4>{{highlightText}}</h4>
+        </div>
+
+        <div class="main-text">
+          <p>{{mainText}}</p>
+        </div>
+
+        <specButton />
+        <div class="magazine-image-container ipad-plus-only">
+          <img class="magazine-image" :src="islandImage" alt="example image">
+        </div>
+
+         <!-- IPAD+ BUTTON BELOW-->
+         <specButton class="ipad-plus-only"/>
+         <!-- IPAD+ BUTTON ABOVE-->
+
       </div>
+      <!-- FIRST COLUMN ABOVE -->
+
+      <!-- SECOND COLUMN BELOW -->
+      <div class="second-column">
+
+
+        <!-- FEATURE GRID BELOW-->
+        <div class="features-container">
+          <feature v-for="(text, index) in featureText" :key="index" :text="text" :number="index"/>
+        </div>
+        <!-- FEATURE GRID ABOVE -->
+
+        <!-- IPAD+ BUTTON BELOW-->
+        <div class="magazine-image-container ipad-plus-only">
+          <img class="magazine-image" :src="gallImage" alt="example image">
+          <img class="magazine-image" :src="gallImage" alt="example image">
+        </div>
+        <!-- IPAD+ BUTTON ABOVE-->
+
+
+        <!-- MOBILE CAROUSEL BELOW -->
+        <div class="image-carousel mobile-only">
+          <carousel />
+        </div>
+        <!-- MOBILE CAROUSEL ABOVE -->
+
+
+
+        <specButton class="mobile-only"/>
+      </div>
+      <!-- SECOND COLUMN ABOVE -->
     </div>
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+// COMPONENTS
+import carousel from '~/components/carousel';
+import specButton from '~/components/specButton';
+import feature from '~/components/feature';
+
+// IMAGES
+import gallImage from '~/assets/images/gallimage.jpeg';
+import islandImage from '~/assets/images/island.jpeg';
+import palmImage from '~/assets/images/palm.jpeg';
+
 
 export default {
   components: {
-    Logo
+    carousel,
+    specButton,
+    feature,
+  },
+  data(){
+    return{
+      gallImage,
+      islandImage,
+      palmImage,
+      sectionHeading: 'SECTION HEADING',
+      highlightText: 'Highlight paragraph duis aute irure dolor in rephrehenderit in voluptate velit energy efficiency eu di fugiat.',
+      mainText: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laundantium, totam rem aperiam, aeque ipsa quae ab illo inventore veritatis et quasi ventus vitae ventus consecutem terra lora magnum lorem aqua.',
+      featureText:[
+        'ICON LABEL LOREM IPSUM TERRA',
+        'ICON LABEL LOREM IPSUM TERRA',
+        'ICON LABEL LOREM IPSUM TERRA',
+        'ICON LABEL LOREM IPSUM TERRA'
+      ],
+    }
   }
 }
 </script>
 
-<style>
+<style lang="scss">
 
-.container {
-  min-height: 100vh;
+.image-carousel{
+  width: 100%;
+  margin: 0 auto;
+}
+.features-container{
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  flex-direction: column;
+  margin-bottom: 2em;
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+.ipad-plus-only{
+  display: none;
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+.mobile-only.button-container{
+  margin-left: 0.5em;
 }
 
-.links {
-  padding-top: 15px;
+@media screen and (min-width: 768px){
+  .mobile-only{
+    display: none;
+  }
+
+  .button-container.ipad-plus-only{
+    display: flex;
+    margin-top: 3em;
+  }
+
+  .ipad-plus-only{
+    display: block;
+  }
+
+  .magazine-grid{
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1.5em;
+  }
+  .features-container{
+    margin-top: 0;
+  }
+  .magazine-image-container{
+    display: grid;
+    grid-gap: 1.5em;
+  }
+
+  // DO NOT HAVE ASSET, CREATED DUMMY HEIGHT TO REPLICATE RATIO (would not stretch image like this otherwise)
+  .first-column{
+    .magazine-image{
+      height: 25em;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px){
+  .section-heading{
+    margin-top: 1em;
+  }
+  .highlight-text{
+    font-size: 1.2em;
+  }
+  .magazine-grid{
+    width: 85%;
+  }
+  .features-container{
+    flex-direction: row;
+  }
+  .first-column{
+    .magazine-image{
+      height: 26em;
+    }
+  }
+}
+@media screen and (min-width: 1920px){
+  .page-container{
+    margin: 4em 0 4em 5em;
+  }
+  .first-column{
+    .magazine-image{
+      height: 65em;
+    }
+  }
 }
 </style>

@@ -14,7 +14,16 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel:'stylesheet', href:'https://fonts.googleapis.com/css?family=Muli:600,900|Roboto+Slab:700&display=swap'
+      },
+    ],
+    script:[
+      // {
+      //   src: 'https//cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js',
+      //   type: 'text/javascript'
+      // }
     ]
   },
 
@@ -27,6 +36,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    '@/assets/css/main.scss',
   ],
 
   /*
