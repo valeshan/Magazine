@@ -159,24 +159,30 @@ export default {
     font-size: 1.2em;
   }
   .magazine-grid{
-    width: 85%;
+    width: 90%;
   }
   .features-container{
     flex-direction: row;
   }
   .first-column{
     .magazine-image{
-      height: 26em;
+      height: 23em;
     }
+  }
+  .page-container{
+    margin: 3em 1.5em;
   }
 }
 @media screen and (min-width: 1920px){
+  .magazine-grid{
+    width: 70%;
+  }
   .page-container{
     margin: 4em 0 4em 5em;
   }
   .first-column{
     .magazine-image{
-      height: 65em;
+      height: 45em;
     }
   }
 }
